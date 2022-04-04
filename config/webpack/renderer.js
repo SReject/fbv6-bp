@@ -44,5 +44,3 @@ module.exports = mergeWithBase({
         ]
     }
 });
-
-console.log(module.exports);

@@ -9,5 +9,3 @@ module.exports = mergeWithBase({
     entry: './main.ts',
     target: 'electron-main'
 });
-
-console.log(module.exports);
