@@ -8,7 +8,7 @@ module.exports = mergeWithBase({
     dir: './renderer/',
 
     // relative to /src/<dir>/
-    entry: './index.tsx',
+    entry: './app.tsx',
 
     target: 'electron-renderer',
     tsx: true,
@@ -35,10 +35,18 @@ module.exports = mergeWithBase({
                 ]
             },
             {
-                test: /\.(gif|jpe?g|tiff|png|webp|bmp|svg|eot|ttf|woff|woff2)$/i,
-                type: 'asset',
+                test: /\.html?$/i,
+                exclude,
+                type: 'asset/resource',
                 generator: {
-                    filename: 'assets/[hash][ext][query]',
+                    filename: '[base]'
+                }
+            },
+            {
+                test: /\.(gif|jpe?g|tiff|png|webp|bmp|svg|eot|ttf|woff|woff2)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[base]',
                 }
             }
         ]

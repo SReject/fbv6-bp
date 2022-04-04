@@ -5,7 +5,9 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const { exclude, mode } = require('./helpers.js');
 
 module.exports = config => {
-    let outputPath = path.resolve(__dirname, '../../build/', config.dir)
+    let outputPath = path.resolve(__dirname, '../../build/', config.dir);
+
+    const tsconfig = path.resolve(__dirname, '../../src/', config.dir, './tsconfig.json');
 
     let resolveExtensions = ['.js', '.ts'];
     if (config.resolve?.extensions) {
@@ -19,7 +21,7 @@ module.exports = config => {
             loader: 'ts-loader',
             options: {
                 transpileOnly: true,
-                config: path.resolve(__dirname, '../../src/', config.dir, './tsconfig.json')
+                configFile: tsconfig
             }
         }
     }];
@@ -27,11 +29,10 @@ module.exports = config => {
         moduleRules = moduleRules.concat(config.module.rules);
     }
 
-    let plugins = [new ForkTsCheckerWebpackPlugin()];
+    let plugins = [new ForkTsCheckerWebpackPlugin({ typescript: { configFile: tsconfig } })];
     if (config.plugins) {
         plugins = plugins.concat(config.plugins);
     }
-
 
     return {
         mode,
