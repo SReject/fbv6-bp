@@ -5,6 +5,7 @@ const baseConfig = require('./base.js');
 const rendererConfig = {
     ...baseConfig,
     entry: path.resolve(__dirname, '../../src/renderer/index.tsx'),
+    target: 'electron-renderer',
     module: {
         rules: [
             {

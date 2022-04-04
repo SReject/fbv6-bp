@@ -4,7 +4,8 @@ const baseConfig = require('./base.js');
 
 const mainConfig = {
     ...baseConfig,
-    entry: path.resolve(__dirname, '../../src/main/index.ts'),
+    entry: path.resolve(__dirname, '../../src/main/main.ts'),
+    target: 'electron-main',
     module: {
         rules: [
             {
