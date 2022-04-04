@@ -1,0 +1,63 @@
+# General ignores
+logs/
+pids/
+*.pid
+*.seed
+*.pid.lock
+*.tgz
+*.log
+
+# OS Ignores: Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# OS Ignores: iOS/Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# OS Ignores: Linux
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Node-specific ignores
+node_modules/
+.grunt
+.npm
+.eslintcache
+.node_repl_history
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Repo Specific
+dist/
+temp/
+eslint.log*
+secrets.json
