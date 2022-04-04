@@ -6,5 +6,8 @@
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     },
+    "css.customData": [
+        ".vscode/tailwind-support.json"
+    ],
     "editor.formatOnSave": true
 }

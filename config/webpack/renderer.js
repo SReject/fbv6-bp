@@ -1,16 +1,23 @@
 const path = require('path');
 
-const baseConfig = require('./base.js');
+const { exclude } = require('./helpers.js');
+const mergeWithBase = require('./merge-with-base.js');
 
-const rendererConfig = {
-    ...baseConfig,
-    entry: path.resolve(__dirname, '../../src/renderer/index.tsx'),
+module.exports = mergeWithBase({
+    // relative to /src/
+    dir: './renderer/',
+
+    // relative to /src/<dir>/
+    entry: './index.tsx',
+
     target: 'electron-renderer',
+    tsx: true,
+
     module: {
         rules: [
             {
                 test: /\.css$/i,
-                exclude: /node_modules/,
+                exclude,
                 use: [
                     { loader: 'style-loader' },
                     {
@@ -28,18 +35,14 @@ const rendererConfig = {
                 ]
             },
             {
-                test: /\.tsx?$/i,
-                exclude: /[\\\/]node_modules(?:[\\\/]|$)/i,
-                loader: 'ts-loader',
-                options: {
-                    transpileOnly: true,
-                    config: path.resolve(__dirname, '../../src/renderer/tsconfig.json')
+                test: /\.(gif|jpe?g|tiff|png|webp|bmp|svg|eot|ttf|woff|woff2)$/i,
+                type: 'asset',
+                generator: {
+                    filename: 'assets/[hash][ext][query]',
                 }
             }
         ]
     }
-};
+});
 
-// todo: merge baseConfig with rendererConfig;
-
-module.exports = rendererConfig;
+console.log(module.exports);

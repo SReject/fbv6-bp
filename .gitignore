@@ -58,6 +58,6 @@ yarn-error.log*
 
 # Repo Specific
 dist/
-temp/
+build/
 eslint.log*
 secrets.json

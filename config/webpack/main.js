@@ -1,24 +1,13 @@
-const path = require('path');
+const mergeWithBase = require('./merge-with-base.js');
 
-const baseConfig = require('./base.js');
+module.exports = mergeWithBase({
 
-const mainConfig = {
-    ...baseConfig,
-    entry: path.resolve(__dirname, '../../src/main/main.ts'),
-    target: 'electron-main',
-    module: {
-        rules: [
-            {
-                test: /\.tsx?$/i,
-                exclude: /[\\\/]node_modules(?:[\\\/]|$)/i,
-                loader: 'ts-loader',
-                options: {
-                    transpileOnly: true,
-                    config: path.resolve(__dirname, '../../src/main/tsconfig.json')
-                }
-            }
-        ]
-    }
-};
+    // relative to /src/
+    dir: './main/',
 
-module.exports = mainConfig;
+    // relative to /src/<dir>/
+    entry: './main.ts',
+    target: 'electron-main'
+});
+
+console.log(module.exports);
