@@ -1,0 +1,13 @@
+{
+    "extends": "../../config/typescript/ts-config.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "lib": [
+            "DOM",
+            "WebWorker"
+        ]
+    },
+    "include": [
+        "/**/*"
+    ]
+}

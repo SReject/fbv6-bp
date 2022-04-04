@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "ES2021",
+        "strict": true,
+        "module": "CommonJS",
+        "resolveJsonModule": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

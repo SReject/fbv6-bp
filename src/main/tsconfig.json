@@ -1,0 +1,12 @@
+{
+    "extends": "../../config/typescript/ts-config.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "lib": [
+            "WebWorker"
+        ]
+    },
+    "files": [
+        "main.ts",
+    ],
+}
