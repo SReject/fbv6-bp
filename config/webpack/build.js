@@ -36,8 +36,6 @@ module.exports.merge = config => {
         });
     }
 
-    const optimization = config.optimization;
-
     return {
         mode,
         entry: path.resolve(__dirname, '../../src/', config.dir, config.entry),
@@ -73,7 +71,7 @@ module.exports.merge = config => {
             ]
         },
         plugins: [...plugins, ...(config.plugins ?? [])],
-        optimization,
+        optimization: config.optimization,
         devtool: 'source-map',
         devServer,
         stats: 'minimal'
