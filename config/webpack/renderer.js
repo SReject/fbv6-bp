@@ -13,6 +13,10 @@ module.exports = mergeWithBase({
     target: 'electron-renderer',
     tsx: true,
 
+    resolve: {
+        extensions: ['.tsx']
+    },
+
     module: {
         rules: [
             {
