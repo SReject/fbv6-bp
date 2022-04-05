@@ -5,8 +5,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const mode = /^pro(?:d(?:uction)?)?$/i.test(process.env.NODE_ENV) ? 'production' : 'development';
-const isDev = mode !== 'production';
-const exclude = /(?:^|[\\\/])(?:(?:node_modules)|(?:config)|(?:\.vscode)|(?:dist)|(?:temp))(?:[\\\/]|$)/i;
+const exclude = /(?:^|[\\\/])(?:(?:node_modules)|(?:config)|(?:\.vscode)|(?:dist)|(?:build))(?:[\\\/]|$)/i;
 
 module.exports.exclude = exclude;
 module.exports.merge = config => {
@@ -23,7 +22,7 @@ module.exports.merge = config => {
     ];
 
     let devServer, getCustomTransformers;
-    if (isDev && config.tsx) {
+    if (mode !== 'production' && config.tsx) {
         plugins.push(new ReactRefreshWebpackPlugin());
         devServer = {
             hot: true,
