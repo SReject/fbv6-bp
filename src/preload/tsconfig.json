@@ -1,0 +1,10 @@
+{
+    "extends": "../../config/typescript/base.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "lib": [
+            "es2021",
+            "dom"
+        ]
+    }
+}
