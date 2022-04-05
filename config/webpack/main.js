@@ -1,7 +1,7 @@
-const mergeWithBase = require('./merge-with-base.js');
+const { merge } = require('./build.js');
 
 module.exports = [
-    mergeWithBase({
+    merge({
 
         // relative to /src/
         dir: './main/',
@@ -10,7 +10,7 @@ module.exports = [
         entry: './main.ts',
         target: 'electron-main'
     }),
-    mergeWithBase({
+    merge({
 
         // relative to /src/
         dir: './preload/',

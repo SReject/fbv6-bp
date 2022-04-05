@@ -3,10 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-const { exclude } = require('./helpers.js');
-const mergeWithBase = require('./merge-with-base.js');
+const { merge, exclude } = require('./build.js');
 
-module.exports = mergeWithBase({
+module.exports = merge({
     // enable tsx suppport
     tsx: true,
 
