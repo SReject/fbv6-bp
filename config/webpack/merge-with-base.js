@@ -19,16 +19,19 @@ module.exports = config => {
     let moduleRules = [{
         test: config.tsx ? /\.tsx?/i : /\.ts/i,
         exclude,
-        use: {
-            loader: 'ts-loader',
-            options: {
-                configFile: tsconfig,
-                getCustomTransformers: () => ({
-                    before: [isDev() && config.tsx && ReactRefreshTypeScript()].filter(Boolean),
-                }),
-                transpileOnly: true,
+        use: [
+            { loader: 'source-map-loader' },
+            {
+                loader: 'ts-loader',
+                options: {
+                    configFile: tsconfig,
+                    getCustomTransformers: () => ({
+                        before: [isDev() && config.tsx && ReactRefreshTypeScript()].filter(Boolean),
+                    }),
+                    transpileOnly: true,
+                }
             }
-        }
+        ]
     }];
     if (config.module?.rules) {
         moduleRules = moduleRules.concat(config.module.rules);
@@ -69,7 +72,7 @@ module.exports = config => {
             rules: moduleRules
         },
         plugins,
-        devtool: 'inline-source-map',
+        devtool: 'source-map',
         devServer,
         stats: 'minimal'
     }
