@@ -1,4 +1,7 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const { exclude } = require('./helpers.js');
 const mergeWithBase = require('./merge-with-base.js');
@@ -10,7 +13,8 @@ module.exports = mergeWithBase({
     // relative to /src/<dir>/
     entry: './app.tsx',
 
-    target: 'electron-renderer',
+    // electron-renderer assumes node integration. something we don't want
+    target: 'web',
     tsx: true,
 
     resolve: {
@@ -23,7 +27,13 @@ module.exports = mergeWithBase({
                 test: /\.css$/i,
                 exclude,
                 use: [
-                    { loader: 'style-loader' },
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            emit: true,
+                            esModule: false
+                        }
+                    },
                     {
                         loader: 'css-loader',
                         options: { importLoaders: 1 }
@@ -38,6 +48,7 @@ module.exports = mergeWithBase({
                     }
                 ]
             },
+            /*
             {
                 test: /\.html?$/i,
                 exclude,
@@ -46,6 +57,7 @@ module.exports = mergeWithBase({
                     filename: '[base]'
                 }
             },
+            */
             {
                 test: /\.(gif|jpe?g|tiff|png|webp|bmp|svg|eot|ttf|woff|woff2)$/i,
                 type: 'asset/resource',
@@ -54,5 +66,12 @@ module.exports = mergeWithBase({
                 }
             }
         ]
-    }
+    },
+    plugins:[
+        new MiniCssExtractPlugin({ filename: 'css/[name].css'}),
+        new HtmlWebpackPlugin({
+            title: 'Firebot PlayGround',
+            template: './src/renderer/index.html'
+        })
+    ]
 });

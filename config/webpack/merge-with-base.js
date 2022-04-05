@@ -50,8 +50,10 @@ module.exports = config => {
     }
 
     let devServer;
-    if (isDev()) {
-        devServer = { hot: true }
+    if (isDev() && config.tsx) {
+        devServer = {
+            hot: true
+        }
     }
 
     return {
