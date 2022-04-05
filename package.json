@@ -5,7 +5,7 @@
     "version": "6.0.0",
     "license": "GPL-3.0",
     "scripts": {
-        "start": "webpack build -c ./config/webpack/main.js && concurrently --kill-others \"webpack serve -c ./config/webpack/renderer.js --hot\" \"electron ./build/main/main.js\""
+        "start": "webpack build -c ./config/webpack/main.js && concurrently --kill-others \"webpack serve -c ./config/webpack/renderer.js --hot\" \"electron ./build/main/index.js\""
     },
     "devDependencies": {
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",

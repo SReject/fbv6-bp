@@ -16,11 +16,6 @@ module.exports = config => {
         resolveExtensions = resolveExtensions.concat(config.resolve.extensions);
     }
 
-    let resolveAliases = {};
-    if (config.resolve?.aliases) {
-        resolveAliases = { resolveAliases, ...(config.resolve.aliases) };
-    }
-
     let moduleRules = [{
         test: config.tsx ? /\.tsx?/i : /\.ts/i,
         exclude,
@@ -63,12 +58,12 @@ module.exports = config => {
         mode,
         entry: path.resolve(__dirname, '../../src/', config.dir, config.entry),
         output: {
+            filename: 'index.js',
             path: outputPath
         },
         target: config.target,
         resolve: {
-            extensions: resolveExtensions,
-//            aliases: resolveAliases
+            extensions: resolveExtensions
         },
         module: {
             rules: moduleRules

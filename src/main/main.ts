@@ -7,7 +7,10 @@ let mainWindow: BrowserWindow;
 const createWindow = () => {
     mainWindow = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        webPreferences: {
+            preload: '../preload/index.js'
+        }
     });
 
     if (isDev) {
