@@ -8,7 +8,7 @@ import { createRoot } from 'react-dom/client';
 class App extends React.Component {
     render() {
         return (
-            <span className="font-bold">Fixed tailwind!!</span>
+            <span className="font-bold">We in there bois!</span>
         );
     }
 }
