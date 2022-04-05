@@ -14,5 +14,7 @@ class App extends React.Component {
 }
 
 const container = document.getElementById('firebot');
-const root = createRoot(container!);
-root.render(<App />);
+if (container != null) {
+    const root = createRoot(container);
+    root.render(<App />);
+}
