@@ -1,15 +1,18 @@
 // main entry point for backend
 import { app, BrowserWindow } from 'electron';
+import path from 'path';
 
 const isDev = !/^pro(?:d(?:uction)?)?$/.test(process.env.NODE_ENV || '');
 
 let mainWindow: BrowserWindow;
 const createWindow = () => {
+
+
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
-            preload: '../preload/index.js'
+            preload: path.resolve(__dirname, '../preload/index.js')
         }
     });
 
