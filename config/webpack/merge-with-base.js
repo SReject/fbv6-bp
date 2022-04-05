@@ -52,7 +52,10 @@ module.exports = config => {
     let devServer;
     if (isDev() && config.tsx) {
         devServer = {
-            hot: true
+            hot: true,
+            static: {
+                directory: path.resolve(__dirname, '../../build/static/')
+            }
         }
     }
 
