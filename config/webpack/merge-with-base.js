@@ -47,6 +47,8 @@ module.exports = config => {
         plugins = plugins.concat(config.plugins);
     }
 
+    const optimization = config.optimization;
+
     let devServer;
     if (isDev() && config.tsx) {
         devServer = {
@@ -72,6 +74,7 @@ module.exports = config => {
             rules: moduleRules
         },
         plugins,
+        optimization,
         devtool: 'source-map',
         devServer,
         stats: 'minimal'

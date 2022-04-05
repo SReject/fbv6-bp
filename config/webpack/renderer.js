@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const { exclude } = require('./helpers.js');
 const mergeWithBase = require('./merge-with-base.js');
@@ -58,6 +58,9 @@ module.exports = mergeWithBase({
                 }
             }
         ]
+    },
+    optimization: {
+        minimizer: [new CssMinimizerPlugin()]
     },
     plugins:[
         new MiniCssExtractPlugin({ filename: 'css/[name].css'}),
