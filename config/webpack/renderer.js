@@ -7,6 +7,9 @@ const { exclude } = require('./helpers.js');
 const mergeWithBase = require('./merge-with-base.js');
 
 module.exports = mergeWithBase({
+    // enable tsx suppport
+    tsx: true,
+
     // relative to /src/
     dir: './renderer/',
 
@@ -15,7 +18,6 @@ module.exports = mergeWithBase({
 
     // electron-renderer assumes node integration. something we don't want
     target: 'web',
-    tsx: true,
 
     resolve: {
         extensions: ['.tsx']
@@ -48,16 +50,6 @@ module.exports = mergeWithBase({
                     }
                 ]
             },
-            /*
-            {
-                test: /\.html?$/i,
-                exclude,
-                type: 'asset/resource',
-                generator: {
-                    filename: '[base]'
-                }
-            },
-            */
             {
                 test: /\.(gif|jpe?g|tiff|png|webp|bmp|svg|eot|ttf|woff|woff2)$/i,
                 type: 'asset/resource',
