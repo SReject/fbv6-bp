@@ -15,10 +15,5 @@ module.exports = {
         browser: true
     },
 
-    ignorePatterns: [
-        "/node_modules/**/*",
-        "/build/**/*",
-        "/config/**/*",
-        "/dist/**/*"
-    ]
+    ignorePatterns: ["/**/*", "!/src/**/*"]
 };

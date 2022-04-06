@@ -3,6 +3,7 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ReactRefreshTypeScript = require('react-refresh-typescript');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 const mode = /^pro(?:d(?:uction)?)?$/i.test(process.env.NODE_ENV) ? 'production' : 'development';
 const exclude = /(?:^|[\\\/])(?:(?:node_modules)|(?:config)|(?:\.vscode)|(?:dist)|(?:build))(?:[\\\/]|$)/i;
@@ -18,7 +19,8 @@ module.exports.merge = config => {
     }
 
     const plugins = [
-        new ForkTsCheckerWebpackPlugin({ typescript: { configFile: tsconfig } })
+        new ForkTsCheckerWebpackPlugin({ typescript: { configFile: tsconfig } }),
+        new ESLintWebpackPlugin({ quiet: true, failOnError: true })
     ];
 
     let devServer, getCustomTransformers;

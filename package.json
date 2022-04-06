@@ -5,7 +5,7 @@
     "version": "6.0.0",
     "license": "GPL-3.0",
     "scripts": {
-        "start:dev": "webpack build -c ./config/webpack/main.js && concurrently --kill-others \"webpack serve -c ./config/webpack/renderer.js --hot\" \"electron ./build/main/index.js\"",
+        "start:dev": "webpack build -c ./config/webpack/main.js && concurrently -k -s=first \"webpack serve -c ./config/webpack/renderer.js --hot\" \"electron ./build/main/index.js\"",
         "start:prod": "webpack build -c ./config/webpack/all.js --node-env production && electron ./build/main/index.js"
     },
     "devDependencies": {
@@ -22,6 +22,7 @@
         "electron-builder": "^22.14.13",
         "eslint": "^8.12.0",
         "eslint-plugin-react": "^7.29.4",
+        "eslint-webpack-plugin": "^3.1.1",
         "fork-ts-checker-webpack-plugin": "^7.2.3",
         "html-webpack-plugin": "^5.5.0",
         "mini-css-extract-plugin": "^2.6.0",
